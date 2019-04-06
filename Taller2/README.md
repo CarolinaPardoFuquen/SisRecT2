@@ -1,3 +1,3 @@
-# vino
+# Taller de sistemas de Recomendacion Modelos hibridos
 django 
-Taller No 1 de Sistemas de Recomendación.
+Taller No 2 de Sistemas de Recomendación.
