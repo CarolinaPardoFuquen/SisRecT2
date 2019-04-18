@@ -1,5 +1,0 @@
-__pycache__/
-*/migrations/*
-.env
-db.sqlite3
-data.json
