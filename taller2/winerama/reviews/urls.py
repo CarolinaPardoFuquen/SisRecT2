@@ -2,6 +2,10 @@ from django.conf.urls import url
 #from apps.review.views import user_recommendation_list
 from . import views
 
+from django.contrib.auth.views import (
+    login, logout, password_reset, password_reset_done, password_reset_confirm,
+    password_reset_complete
+)
 urlpatterns = [
     # ex: /
     url(r'^$', views.review_list, name='review_list'),
@@ -20,4 +24,7 @@ urlpatterns = [
     url(r'^review/user/$', views.user_review_list, name='user_review_list'),
     # ex: /recommendation - get wine recommendations for the logged user
     url(r'^recommendation/$', views.user_recommendation_list, name='user_recommendation_list'),
+    url(r'^login/$', login, {'template_name': 'accounts/login.html'}, name='login'),
+    url(r'^logout/$', logout, {'template_name': 'accounts/logout.html'}, name='logout'),
+    url(r'^reviews/register/$', views.register, name='register'),
 ]

@@ -95,10 +95,10 @@ WSGI_APPLICATION = 'winerama.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'wine',
+        'NAME': 'wine3',
         'USER': 'wine',
         'PASSWORD': 'wine',
-        'HOST': '172.17.0.2',
+        'HOST': '172.17.0.4',
         'PORT': '5432'
     }
 }

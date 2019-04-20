@@ -1,9 +1,10 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from .models import Review, Wine, Cluster, Recomendations
 from .forms import ReviewForm
+from .forms import RegistrationForm
 from .suggestions import update_clusters
 from django.views.generic.list import ListView
 
@@ -139,3 +140,26 @@ def RecomendationsList(request):
         #super(RecomendationsList, self).__init__()
         #self.arg = arg
         
+
+def register(request):
+    print ("MAPFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", request.method)
+
+    if request.method == 'POST':
+        print ("11111")
+        form = RegistrationForm(request.POST)
+        print ("11111", form.is_valid())
+        if form.is_valid():
+            print ("11111")
+            form.save()
+            return render(request,'reviews/top_list.html')
+        args = {'form': form}
+        print ("MAPFARGSSSS",args)
+        return render(request, 'reviews/registration_form.html', args)
+    else:
+        form = RegistrationForm()
+        print ("MAPFFFFFFFFFFFFFFFFFFFFFFFF2", form)
+
+        args = {'form': form}
+        print ("MAPFARGSSSS",args)
+        return render(request, 'reviews/registration_form.html', args)
+

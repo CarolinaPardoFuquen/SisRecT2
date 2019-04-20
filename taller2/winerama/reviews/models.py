@@ -8,9 +8,10 @@ from django.db.models import Sum
 import numpy as np
 import pandas as pd
 
+from django.db.models.signals import post_save
 
 
-
+    
 class Wine(models.Model):
     name = models.CharField(max_length=200)
     def __str__(self):
