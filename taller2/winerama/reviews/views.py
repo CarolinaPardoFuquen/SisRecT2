@@ -131,6 +131,11 @@ def RecomendationsList(request):
     context2 = {'Recomendations':Recomendation}
     return render(request,'reviews/top_list2.html', context2)
 
+def RecomendationsListCat(request):
+    RecomendationCat = RecomendationsCat.objects.all() #este es el query set
+    context3 = {'RecomendationsCat':RecomendationCat}
+    return render(request,'reviews/top_list2.html', context3)
+
 
 #class RecomendationsList(object):
     """docstring for RecomendationsList"""

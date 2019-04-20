@@ -63,6 +63,11 @@ class Recomendations(models.Model):
 
 
 
+class RecomendationsCat(models.Model):
+    ID_Restaurant2 = models.IntegerField()
+    ID_User = models.IntegerField(primary_key=True) 
+    name_Restaurant2 = models.CharField(max_length=500)
+    Category = models.CharField(max_length=100)
 
 #class Recomendations(ListView):
 

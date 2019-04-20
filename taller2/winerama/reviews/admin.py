@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Wine, Review, Cluster, Recomendations
+from .models import Wine, Review, Cluster, Recomendations, RecomendationsCat
 
 
 
@@ -20,3 +20,4 @@ admin.site.register(Wine)
 admin.site.register(Review, ReviewAdmin)
 admin.site.register(Cluster, ClusterAdmin)
 admin.site.register(Recomendations)
+admin.site.register(RecomendationsCat)

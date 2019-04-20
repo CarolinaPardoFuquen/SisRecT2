@@ -11,10 +11,15 @@
   
 <thead>
   <tr>
-    <td>ID</td>
     <td>Usuario</td>
-    <td>Nombre</td>
+    <td>ID Restaurante</td>
+    <td>Nombre Restaurante</td>
     <td>Ciudad</td>
+    <td></td> 
+    <td>Usuario</td>
+    <td>ID Restaurante</td>
+    <td>Nombre Restaurante</td>
+    <td>Categoría</td>
   </tr>
 
 </thead>
@@ -27,6 +32,11 @@
     <td>{{  Recomendation.ID_Restaurant}}</td>
     <td>{{  Recomendation.name_Restaurant}}</td>
     <td>{{  Recomendation.City }}</td>
+    <td></td>
+    <td>{{  RecomendationCat.ID_User}}</td>
+    <td>{{  RecomendationCat.ID_Restaurant2}}</td>
+    <td>{{  RecomendationCat.name_Restaurant2}}</td>
+    <td>{{  RecomendationCat.Category }}</td>
   </tr>
   {% endfor %}
   {% else %}
