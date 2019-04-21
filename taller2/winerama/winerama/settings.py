@@ -40,6 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'bootstrap3',
     'reviews',
+    'django_filters',
+    'rest_framework',   
     
 )
 

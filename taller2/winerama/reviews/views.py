@@ -136,6 +136,9 @@ def RecomendationsListCat(request):
     context3 = {'RecomendationsCat':RecomendationCat}
     return render(request,'reviews/top_list2.html', context3)
 
+def user_list(request):
+    filter = UserFilter(request.GET, queryset=Recomendations.objects.all())
+    return render(request,'reviews/top_list2.html', {'filter':filter})
 
 #class RecomendationsList(object):
     """docstring for RecomendationsList"""

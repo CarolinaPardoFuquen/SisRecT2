@@ -11,8 +11,8 @@ from reviews.models import Wine
 
 def save_wine_from_row(wine_row):
     wine = Wine()
-    wine.id = wine_row[0]
-    wine.name = wine_row[1]
+    #wine.id = wine_row[0]
+    wine.name = wine_row[2]
     wine.save()
     
     

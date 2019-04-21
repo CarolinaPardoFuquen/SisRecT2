@@ -4,7 +4,8 @@ import numpy as np
 from django.db.models import Avg
 from django.db.models import Count
 from django.db.models import Sum
-
+import django_filters
+from django_filters import rest_framework
 import numpy as np
 import pandas as pd
 
@@ -14,6 +15,8 @@ from django.db.models.signals import post_save
     
 class Wine(models.Model):
     name = models.CharField(max_length=200)
+    CategoryR = models.CharField(max_length=200)
+    Stars = models.CharField(max_length=200)
     def __str__(self):
         return self.name
 
@@ -60,6 +63,12 @@ class Recomendations(models.Model):
     ID_User = models.IntegerField(primary_key=True) 
     name_Restaurant = models.CharField(max_length=500)
     City = models.CharField(max_length=100)
+    class Meta(object):
+        ordering = ['ID_User']
+        """docstring for Meta"""
+        def __str__(self):
+            return self.ID_User
+            
 
 
 
@@ -68,6 +77,21 @@ class RecomendationsCat(models.Model):
     ID_User = models.IntegerField(primary_key=True) 
     name_Restaurant2 = models.CharField(max_length=500)
     Category = models.CharField(max_length=100)
+    class Meta(object):
+        ordering = ['ID_User']
+        """docstring for Meta"""
+        def __str__(self):
+            return self.ID_User
+
+
+
+
+
+
+
+
+
+
 
 #class Recomendations(ListView):
 
