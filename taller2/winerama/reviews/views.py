@@ -7,7 +7,7 @@ from .forms import ReviewForm
 from .forms import RegistrationForm
 from .suggestions import update_clusters
 from django.views.generic.list import ListView
-
+from .filters import RecomendationsFilter
 import datetime
 
 from django.contrib.auth.decorators import login_required
@@ -29,7 +29,7 @@ def wine_list(request):
     return render(request, 'reviews/wine_list.html', context)
 
 def top_list(request):
-    return render(request,'reviews/top_list.html')
+    return render(request,'reviews/pruebaa3.html')
 
 
 def wine_detail(request, wine_id):
@@ -127,11 +127,60 @@ class WineListView(ListView):
         return context
 
 def RecomendationsList(request):
+    context2 = {}
+    recomendationfiltered=[]
+    recomendationcatfiltered=[]
+    users = Recomendations.objects.distinct('ID_User')
+    context2['users'] = users 
+    #def get_queryset(self):
+    #    result = super(RecomendationsList, self).get_queryset()
+    #    filter_uid =self.request.GET.get('user_id')
+    #    print ("methodsssssssssssssssssssssssssssss", filter_uid)
     Recomendation = Recomendations.objects.all() #este es el query set
-    context2 = {'Recomendations':Recomendation}
     RecomendationCat = RecomendationsCat.objects.all() #este es el query set
-    context2['RecomendationsCat'] = RecomendationCat
-    print (context2)
+    for r in Recomendation:
+        #print ("RECCCCC", r.ID_User)
+        #print ("RECCCC1", request.GET.get('user_id'))
+        if request.GET.get('user_id'):
+            #print ("AAAAAAAAAAAAAAAAA")
+            if int(request.GET.get('user_id')) == int(r.ID_User):
+                #print ("LLEENAAANDOOOOOO")
+                recomendationfiltered.append(r)
+        else:
+            if str(request.user) == "AnonymousUser":
+                if int(r.ID_User) == 1:
+                    recomendationfiltered.append(r)
+
+            elif int(request.user.id) == int(r.ID_User):
+                recomendationfiltered.append(r)
+
+    for rc in RecomendationCat:
+        if request.GET.get('user_id'):
+            if int(request.GET.get('user_id')) == int(rc.ID_User2):
+                recomendationcatfiltered.append(rc)
+        else:
+            if str(request.user) == "AnonymousUser":
+                if int(rc.ID_User2) == 1:
+                    recomendationcatfiltered.append(rc)
+
+            elif int(request.user.id) == int(rc.ID_User2):
+                recomendationcatfiltered.append(rc)
+
+    print ("REQUESTTTTTTTTTTTTTT", request.GET.get('user_id'))
+    #if request.GET.get('user_id'):
+    #    recomendationsFilter = RecomendationsFilter(request.GET, queryset=Recomendation)
+    #    #recomendationsFilter = RecomendationsFilter(request.GET, queryset=0)
+    #    print ('ENTROOOOOOOOOOOOOO')
+    #    context2['Recomendations'] = recomendationsFilter
+    #    context2['RecomendationsCat'] = RecomendationCat
+    #    return render(request,'reviews/top_list2.html', context2)
+    if request.GET.get('user_id') or request.user.id == None or request.user.id:
+        context2['Recomendations'] = recomendationfiltered
+        context2['RecomendationsCat'] = recomendationcatfiltered
+    else:
+        context2['Recomendations'] = Recomendation
+        context2['RecomendationsCat'] = RecomendationCat
+    #print (context2)
     return render(request,'reviews/top_list2.html', context2)
 
 def RecomendationsListCat(request):
@@ -162,7 +211,7 @@ def register(request):
         if form.is_valid():
             print ("11111")
             form.save()
-            return render(request,'reviews/top_list.html')
+            return render(request,'reviews/pruebaa3.html')
         args = {'form': form}
         print ("MAPFARGSSSS",args)
         return render(request, 'reviews/registration_form.html', args)

@@ -5,10 +5,16 @@
 {% endblock %}
 
 {% block content %}
+<form action="" method="get">
+  <select name="user_id" onchange="this.form.submit();">
+    <option selected="selected" disabled>Select a user</option>
+    {% for user in users %}
+    <option value={{user.ID_User}}>{{user.ID_User}}
+    {% endfor %}
+  </select>
+  <table class="table table-bordered">
+<form>
 
-
-<table class="table table-bordered">
-  
 <thead>
   <tr>
     <td>Usuario</td>
