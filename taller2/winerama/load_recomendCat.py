@@ -6,15 +6,15 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "winerama.settings")
 import django
 django.setup()
 
-from reviews.models import Recomendations
+from reviews.models import RecomendationsCat
 
 
 def save_recomendation_from_row(recomendation_row):
-    recomendation = Recomendations()
-    recomendation.ID_Restaurant = recomendation_row[0]
-    recomendation.ID_User = recomendation_row[1]
-    recomendation.name_Restaurant = recomendation_row[2]
-    recomendation.City = recomendation_row[3]
+    recomendation = RecomendationsCat()
+    recomendation.ID_Restaurant2 = recomendation_row[0]
+    recomendation.ID_User2 = recomendation_row[1]
+    recomendation.name_Restaurant2 = recomendation_row[2]
+    recomendation.Category = recomendation_row[4]
     recomendation.save()
     
     
@@ -30,7 +30,7 @@ if __name__ == "__main__":
             axis=1
         )
 
-        print ("There are {} recomendations".format(Recomendations.objects.count()))
+        print ("There are {} recomendations".format(RecomendationsCat.objects.count()))
         
     else:
         print ("Please, provide recomendation file path")

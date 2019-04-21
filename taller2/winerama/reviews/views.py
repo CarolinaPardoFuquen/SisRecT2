@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
-from .models import Review, Wine, Cluster, Recomendations
+from .models import Review, Wine, Cluster, Recomendations, RecomendationsCat
 from .forms import ReviewForm
 from .forms import RegistrationForm
 from .suggestions import update_clusters
@@ -129,6 +129,9 @@ class WineListView(ListView):
 def RecomendationsList(request):
     Recomendation = Recomendations.objects.all() #este es el query set
     context2 = {'Recomendations':Recomendation}
+    RecomendationCat = RecomendationsCat.objects.all() #este es el query set
+    context2['RecomendationsCat'] = RecomendationCat
+    print (context2)
     return render(request,'reviews/top_list2.html', context2)
 
 def RecomendationsListCat(request):

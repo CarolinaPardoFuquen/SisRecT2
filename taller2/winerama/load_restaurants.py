@@ -13,6 +13,8 @@ def save_wine_from_row(wine_row):
     wine = Wine()
     #wine.id = wine_row[0]
     wine.name = wine_row[2]
+    #wine.CategoryR = wine_row[4]
+    #wine.Stars = wine_row[5]
     wine.save()
     
     
