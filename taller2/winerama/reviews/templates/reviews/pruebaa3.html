@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<h2>Top 10 de Restaurantes</h2>
+<h2>Top 5 Estrellas de Restaurantes</h2>
+
+<h4>Deseamos que tengas unas de las mejores experiencias conociendo nuevos restaurantes en tu ciudad y en el Mundo!!!</h4>
+<h4>Estos son los Restaurantes Top 5 Estrellas!!!</h4>
 {% endblock %}
 
 {% block content %}
@@ -41,8 +44,8 @@
   var csv = new dex.csv({
     'header': ["Restaurants", "City", "Category", "Stars"],
     'data': [
-     ["Gioconda", "Da Vinci", "louvre", "1506"],
- 			["Venus", "Alexander", "louvre", "130ac"],
+     ["Bridgeport Cafe", "Cleveland", "Cafes", "1506"],
+ 			["Cinema Moderne", "Alexander", "louvre", "130ac"],
       ["Pilot Coffee Roasters","Toronto","Cafes","5.0"],
       ["Foodbenders","Toronto","Cafes","5.0"],
       ["Bridgeport Cafe","Cleveland","Cafes","5.0"],

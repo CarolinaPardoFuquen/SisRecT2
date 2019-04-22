@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<h2>Lista de los Restaurantes</h2>
+{% if user.is_authenticated %}
+  <h2>Hola  <strong> {{ user.username }} </strong>  Aqui te presentamos la Lista de Restaurantes en el Mundo</h2>
+  <h4> Permitenos conocer más sobre ti   <strong> {{ user.username }} </strong> evaluando alguno de estos restaurantes </h4>
+ {% else %}
+    <h2> Lista de los Restaurantes en el Mundo </h2>
+{% endif %}
+
 {% endblock %}
 
 {% block content %}
