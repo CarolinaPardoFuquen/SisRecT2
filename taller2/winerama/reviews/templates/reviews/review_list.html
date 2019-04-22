@@ -15,7 +15,7 @@
 <div class="row">
     {% for review in latest_review_list %}
     <div class="col-xs-6 col-lg-4">
-        <h4><a href="{% url 'reviews:review_detail' review.id %}">
+        <h4><a>
         {{ review.wine }}
         </a></h4>
         <h6>Valorado  {{ review.rating }} de 5 por <a href="{% url 'reviews:user_review_list' review.user_name %}" >{{ review.user_name }}</a></h6>
