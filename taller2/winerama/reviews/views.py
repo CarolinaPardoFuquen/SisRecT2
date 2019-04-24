@@ -130,8 +130,14 @@ def RecomendationsList(request):
     context2 = {}
     recomendationfiltered=[]
     recomendationcatfiltered=[]
+    userscontext = []
     users = Recomendations.objects.distinct('ID_User')
-    context2['users'] = users 
+    aux = 0
+    for u in users:
+        if aux < 800:
+            aux += 1
+            userscontext.append(u)
+    context2['users'] = userscontext 
     #def get_queryset(self):
     #    result = super(RecomendationsList, self).get_queryset()
     #    filter_uid =self.request.GET.get('user_id')
