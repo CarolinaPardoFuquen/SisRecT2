@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 class RegistrationForm(UserCreationForm):
-    print( "COMO MANDE")
+    #print( "COMO MANDE")
     city = forms.CharField(required=True)
 
     class Meta:

@@ -172,7 +172,7 @@ def RecomendationsList(request):
             elif int(request.user.id) == int(rc.ID_User2):
                 recomendationcatfiltered.append(rc)
 
-    print ("REQUESTTTTTTTTTTTTTT", request.GET.get('user_id'))
+    #print ("REQUESTTTTTTTTTTTTTT", request.GET.get('user_id'))
     #if request.GET.get('user_id'):
     #    recomendationsFilter = RecomendationsFilter(request.GET, queryset=Recomendation)
     #    #recomendationsFilter = RecomendationsFilter(request.GET, queryset=0)
@@ -208,24 +208,24 @@ def user_list(request):
         
 
 def register(request):
-    print ("MAPFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", request.method)
+    #print ("ddd", request.method)
 
     if request.method == 'POST':
-        print ("11111")
+        #print ("11111")
         form = RegistrationForm(request.POST)
-        print ("11111", form.is_valid())
+        #print ("11111", form.is_valid())
         if form.is_valid():
-            print ("11111")
+            #print ("11111")
             form.save()
             return render(request,'reviews/pruebaa3.html')
         args = {'form': form}
-        print ("MAPFARGSSSS",args)
+        #print ("MAPFARGSSSS",args)
         return render(request, 'reviews/registration_form.html', args)
     else:
         form = RegistrationForm()
-        print ("MAPFFFFFFFFFFFFFFFFFFFFFFFF2", form)
+        #print ("MAPFFFFFFFFFFFFFFFFFFFFFFFF2", form)
 
         args = {'form': form}
-        print ("MAPFARGSSSS",args)
+        #print ("MAPFARGSSSS",args)
         return render(request, 'reviews/registration_form.html', args)
 
